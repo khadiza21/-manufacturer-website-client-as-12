@@ -19,7 +19,7 @@ const Header = () => {
             navbarScroll
           >
             <CustonLink to="/">Home</CustonLink>
-            <CustonLink to="/">Link</CustonLink>
+            <CustonLink to="/tools">Tools</CustonLink>
             
             <NavDropdown className="text-success ps-3 fw-bold" title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -31,7 +31,7 @@ const Header = () => {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
-            <CustonLink to="/" disabled>
+            <CustonLink to="/lin" disabled>
               Link
             </CustonLink>
           </Nav>
