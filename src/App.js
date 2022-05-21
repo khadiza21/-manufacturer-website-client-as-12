@@ -7,6 +7,9 @@ import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <div >
+      <div>
+        <h1>My name is Khadiza</h1>
+      </div>
       <Routes>
        
       </Routes>
