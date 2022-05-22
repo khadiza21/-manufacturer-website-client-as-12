@@ -25,7 +25,7 @@ const Banner = () => {
             <Fade bottom>
               <h2 className="mt-3">FLAT 70% OFF/ALL PRODUCTS</h2>
             </Fade>
-            <Button className="btn my-3 fw-bold" variant="btn">
+            <Button className="btn my-3 fw-bold btn-success" variant="btn">
               Purshace
             </Button>
           </div>
