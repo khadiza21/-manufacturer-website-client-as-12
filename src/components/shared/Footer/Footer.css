@@ -1,0 +1,41 @@
+.head-foot {
+    background-color: #483b33;
+    color: #ffffff;
+  }
+  .inputt {
+    border: 0px solid;
+  
+    font-weight: 600;
+  }
+  @media only screen and (min-width: 280px) and (max-width: 800px) {
+      .bk inputt {
+        padding: 0%;
+        width: 100%;
+      }
+    }
+    
+  .rew {
+    font-weight: 600;
+  }
+  textarea:focus,
+  .inputt:focus {
+    outline: none;
+  }
+  .topright {
+    position: fixed;
+    bottom: 90px;
+    right: 56px;
+    font-size: 18px;
+  }
+  li{
+      list-style: none;
+     color:rgb(182, 175, 175);
+  }
+  .footer-icon,li:hover{
+      
+     color:green;
+     cursor: pointer;
+  }
+  .gray{
+    color:rgb(182, 175, 175);
+  }

@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Header from "./components/shared/Header";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
+import Footer from "./components/shared/Footer/Footer";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
       </Routes>
-
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );
