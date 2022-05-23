@@ -29,6 +29,7 @@ const Header = () => {
           >
             <CustonLink to="/">Home</CustonLink>
             <CustonLink to="/tools">Tools</CustonLink>
+            <CustonLink to="/blog">Blogs</CustonLink>
 
             <NavDropdown
               className="text-success ps-3 fw-bold"
@@ -50,7 +51,7 @@ const Header = () => {
                 className="btn btn-success text-light fw-bold btn-link text-decoration-none"
                 onClick={handleSignOut}
               >
-                Sign Out <i class="fa-solid fa-right-to-bracket"></i>
+                Sign Out <i className="fa-solid fa-right-to-bracket"></i>
               </button>
             ) : (
               <CustonLink
@@ -58,7 +59,7 @@ const Header = () => {
                 to="/login"
               >
                 {" "}
-                Login <i class="fa-solid fa-right-to-bracket"></i>
+                Login <i className="fa-solid fa-right-to-bracket"></i>
               </CustonLink>
             )}
           </Nav>

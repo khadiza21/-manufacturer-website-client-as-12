@@ -5,7 +5,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../shared/Loading";
 
@@ -23,6 +23,9 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+ 
   let signInError;
 
   if (loading || gLoading || updating) {
@@ -41,6 +44,7 @@ const Register = () => {
 
   if (user || gUser) {
     console.log(user || gUser);
+    navigate(from, { replace: true });
   }
 
   const onSubmit = async (data) => {
