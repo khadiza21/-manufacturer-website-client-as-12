@@ -102,7 +102,7 @@ const Register = () => {
         <input
           type="password"
           placeholder="Password"
-          className="ps-2 py-3 "
+          className="ps-2 py-2 "
           {...register("password", {
             required: {
               value: true,
@@ -130,7 +130,7 @@ const Register = () => {
         />
       </form>
 
-      <p className="mt-5 w-75 mx-auto">
+      <p className="mt-5 w-75 fw-bold mx-auto">
         Already have an account?{" "}
         <Link
           to="/login"
