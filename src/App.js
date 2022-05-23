@@ -17,7 +17,8 @@ import BkPortfolio from "./components/pages/BkPortfolio/BkPortfolio";
 import AddReview from "./components/pages/DashBoard/AddReview/AddReview";
 import MyOrder from "./components/pages/DashBoard/MyOrder/MyOrder";
 import MyProfile from "./components/pages/DashBoard/MyProfile/MyProfile";
-import UpdateTools from "./components/pages/UpdateTool/UpdateTools";
+import BuyTool from "./components/pages/BuyTool/BuyTool";
+
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
           path="/tool/:id"
           element={
             <RequireAuth>
-              <UpdateTools></UpdateTools>
+              <BuyTool></BuyTool>
             </RequireAuth>
           }
         ></Route>

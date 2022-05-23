@@ -1,58 +1,119 @@
 [
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    },
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    },
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    },
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    },
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    },
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    },
-    {
-      "name": "Farm Car",
-      "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
-      "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-      "min_order_quantity": 10,
-      "avail_quantity": 20,
-      "price": 27.37
-    }
-  ]
+  {
+    "name": "Farm Car",
+    "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
+    "size": "L",
+    "material": "Iron Max",
+    "vendor": "FLextools",
+    "type": "Car",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "10",
+    "avail_quantity": "200",
+    "price": "2700"
+  },
+  {
+    "name": "Flextool's Garden Cutter",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/10_2000x.jpg?v=1547033411",
+    "size": "L",
+    "material": "Iron",
+    "vendor": "FLextools",
+    "type": "Cutter",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "500",
+    "avail_quantity": "10000",
+    "price": "270"
+  },
+  {
+    "name": "Gardening Water Spray",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/3_2000x.jpg?v=1557220212",
+    "size": "L",
+    "material": "Steel",
+    "vendor": "Ketsy",
+    "type": "Spray",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "200",
+    "avail_quantity": "7000",
+    "price": "220"
+  },
+  {
+    "name": "Flextool's Gardening Trowel",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/6_83eb6702-fa60-4e17-8ae8-f10be7f9c401_2000x.jpg?v=1547033404",
+    "size": "L",
+    "material": "Steel",
+    "vendor": "Nutex",
+    "type": "Trowel",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "300",
+    "avail_quantity": "10000",
+    "price": "260"
+  },
+  {
+    "name": "Eselar Gardening Hoe",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/11_2000x.jpg?v=1550818084",
+    "size": "M",
+    "material": "Iron",
+    "vendor": "Eselar",
+    "type": "Hoe",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "660",
+    "avail_quantity": "15000",
+    "price": "470"
+  },
+  {
+    "name": "Eselar Tool Set",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/14_2000x.jpg?v=1547033392",
+    "size": "S",
+    "material": "Steel",
+    "vendor": "Eselar",
+    "type": "Fork",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "460",
+    "avail_quantity": "35000",
+    "price": "770"
+  },
+  {
+    "name": "Gardening Pruners",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/18_bc07f123-8d19-4afb-aaa7-cb6b0f1cba6a_2000x.jpg?v=1547033390",
+    "size": "L",
+    "material": "Steel",
+    "vendor": "Flextools",
+    "type": "Pruners",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "300",
+    "avail_quantity": "17000",
+    "price": "400"
+  },
+  {
+    "name": "Gardening Hand Gloves",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/17_720x.jpg?v=1547033389",
+    "size": "M",
+    "material": "Plastic",
+    "vendor": "Nutex",
+    "type": "Gloves",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "1000",
+    "avail_quantity": "40000",
+    "price": "1000"
+  },
+  {
+    "name": "Eselar Gardening Trowel",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/21_2000x.jpg?v=1547033387",
+    "size": "M",
+    "material": "Plastic",
+    "vendor": "Eselar",
+    "type": "Trowel",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "min_order_quantity": "1500",
+    "avail_quantity": "50000",
+    "price": "1000"
+  }
+]
