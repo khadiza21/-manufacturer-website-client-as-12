@@ -12,6 +12,8 @@ import NotFound from "./components/shared/NotFound";
 import Tools from "./components/pages/Tools/Tools";
 import RequireAuth from "./components/pages/Login/RequireAuth";
 import Blog from "./components/pages/Public/Blog";
+//import DashBoard from "./components/pages/DashBoard/DashBoard/DashBoard";
+import BkPortfolio from "./components/pages/BkPortfolio/BkPortfolio";
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+     
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/developerimg" element={<BkPortfolio></BkPortfolio>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>

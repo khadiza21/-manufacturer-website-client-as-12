@@ -30,6 +30,7 @@ const Header = () => {
             <CustonLink to="/">Home</CustonLink>
             <CustonLink to="/tools">Tools</CustonLink>
             <CustonLink to="/blog">Blogs</CustonLink>
+            <CustonLink to="/developerimg">About Developer</CustonLink>
 
             <NavDropdown
               className="text-success ps-3 fw-bold"
@@ -45,6 +46,9 @@ const Header = () => {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
+            { 
+            user && <CustonLink to="/dashboard">Dashboard</CustonLink>
+            }
 
             {user ? (
               <button
