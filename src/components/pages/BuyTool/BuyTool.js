@@ -15,10 +15,11 @@ const BuyTool = () => {
     const url = `http://localhost:5000/tools/${id}`;
     fetch(url)
       .then((res) => res.json())
-      .then((tdata) => setTool(tdata));
+      .then((data) => setTool(data));
   }, []);
 
   const onSubmit = (data) => {
+   
     console.log(data);
     const url = `http://localhost:5000/orders`;
     fetch(url, {
@@ -30,7 +31,7 @@ const BuyTool = () => {
     })
       .then((res) => res.json())
       .then((addOrder) => {
-       // console.log(addOrder, user.email, user.uid);
+        // console.log(addOrder, user.email, user.uid);
 
         toast("Oder Added Successfully...");
       });
@@ -95,20 +96,27 @@ const BuyTool = () => {
             className="mb-3 py-2 ps-2"
             {...register("displayName")}
           />
-
-          {/* <input
+          <label htmlFor="Description" className="text-success">
+            Description
+          </label>
+          <textarea
             className="mb-3 py-2"
-            value={tool.id}
-            {...register("id", { required: true, maxLength: 20 })}
-          /> */}
+            value={tool?.description}
+            {...register("description")}
+          />
 
           <input
-            className="mb-3 py-2"
-            value={tool.name}
+            name="name"
+            value={tool?.name}
+            className="mb-3 py-2 ps-2"
             {...register("name")}
           />
 
-          <input className="mb-3 py-2" value={tool.img} {...register("img")} />
+          <input
+            className="mb-3 py-2 ps-2"
+            value={tool.img}
+            {...register("img")}
+          />
           <label htmlFor="Size" className="text-success">
             Size
           </label>
@@ -117,14 +125,7 @@ const BuyTool = () => {
             value={tool.size}
             {...register("size")}
           />
-          <label htmlFor="Description" className="text-success">
-            Description
-          </label>
-          <textarea
-            className="mb-3 py-2"
-            value={tool.description}
-            {...register("description")}
-          />
+
           <label htmlFor="Vendor" className="text-success">
             Vendor
           </label>
