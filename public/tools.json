@@ -115,5 +115,29 @@
     "min_order_quantity": "1500",
     "avail_quantity": "50000",
     "price": "1000"
+  },
+  {
+    "avail_quantity": "15000",
+    "availity": "In stock",
+    "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
+    "displayName": "Bibi Khadiza",
+    "email": "bibikhadiza474@gmail.com",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/11_2000x.jpg?v=1550818084",
+    "material": "Iron",
+    "min_order_quantity": "660",
+    "name": "Eselar Gardening Hoe",
+    "order_quantity": "34",
+    "size": "M",
+    "type": "Hoe",
+    "uid": "8pO44yCQ1VP8Els0pGiaj3ov9eZ2",
+    "vendor": "Eselar"
+  },
+  {
+    "displayName": "Bibi Khadiza",
+    "email": "bibikhadiza474@gmail.com",
+    "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/11_2000x.jpg?v=1550818084",
+    "reviewdes": "bkbkbkb thi s the googsd",
+    "review": "5",
+    "uid": "8pO44yCQ1VP8Els0pGiaj3ov9eZ2"
   }
 ]

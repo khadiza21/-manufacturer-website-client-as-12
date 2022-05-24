@@ -15,7 +15,7 @@ const BuyTool = () => {
     const url = `http://localhost:5000/tools/${id}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setTool(data));
+      .then((tdata) => setTool(tdata));
   }, []);
 
   const onSubmit = (data) => {
@@ -30,7 +30,7 @@ const BuyTool = () => {
     })
       .then((res) => res.json())
       .then((addOrder) => {
-        console.log(addOrder, user.email);
+       // console.log(addOrder, user.email, user.uid);
 
         toast("Oder Added Successfully...");
       });
@@ -79,10 +79,15 @@ const BuyTool = () => {
         >
           <input
             // readOnly
-            value={user?.email || user?.uid}
+            value={user?.email}
             className="mb-3 py-2 ps-2"
-            {...register("email") }
-            {...register("uid") }
+            {...register("email")}
+          />
+          <input
+            // readOnly
+            value={user?.uid}
+            className="mb-3 py-2 ps-2"
+            {...register("uid")}
           />
           <input
             // readOnly
@@ -91,68 +96,84 @@ const BuyTool = () => {
             {...register("displayName")}
           />
 
-          <input
+          {/* <input
             className="mb-3 py-2"
-            value={tool._id}
-            {...register("_id", { required: true, maxLength: 20 })}
-          />
-          
+            value={tool.id}
+            {...register("id", { required: true, maxLength: 20 })}
+          /> */}
+
           <input
             className="mb-3 py-2"
             value={tool.name}
-            {...register("name", { required: true, maxLength: 20 })}
+            {...register("name")}
           />
-          
+
           <input className="mb-3 py-2" value={tool.img} {...register("img")} />
-          <label htmlFor="Size" className="text-success">Size</label>
+          <label htmlFor="Size" className="text-success">
+            Size
+          </label>
           <input
             className="mb-3 py-2"
             value={tool.size}
             {...register("size")}
           />
-             <label htmlFor="Description" className="text-success">Description</label>
+          <label htmlFor="Description" className="text-success">
+            Description
+          </label>
           <textarea
             className="mb-3 py-2"
             value={tool.description}
             {...register("description")}
           />
-             <label htmlFor="Vendor" className="text-success">Vendor</label>
+          <label htmlFor="Vendor" className="text-success">
+            Vendor
+          </label>
           <input
             className="mb-3 py-2 mt-1"
             value={tool.vendor}
             {...register("vendor")}
           />
-             <label htmlFor="Type" className="text-success">Type</label>
+          <label htmlFor="Type" className="text-success">
+            Type
+          </label>
           <input
             className="mb-3 py-2"
             value={tool.type}
             {...register("type")}
           />
-             <label htmlFor="Metarial" className="text-success">Material</label>
+          <label htmlFor="Metarial" className="text-success">
+            Material
+          </label>
           <input
             className="mb-3 py-2"
             value={tool.material}
             {...register("material")}
           />
-             <label htmlFor="Availity" className="text-success">Availity</label>
+          <label htmlFor="Availity" className="text-success">
+            Availity
+          </label>
           <input
             className="mb-3 py-2"
             value={tool.availity}
             {...register("availity")}
           />
-             <label htmlFor="Available Quantity" className="text-success">Available Quantity</label>
+          <label htmlFor="Available Quantity" className="text-success">
+            Available Quantity
+          </label>
           <input
             className="mb-3 py-2"
             value={tool.avail_quantity}
             {...register("avail_quantity")}
           />
-           <label htmlFor="Minimum Order Quantity" className="text-success">Minimum Order Quantity</label>
+          <label htmlFor="Minimum Order Quantity" className="text-success">
+            Minimum Order Quantity
+          </label>
           <input
             className="mb-3 py-2"
             value={tool.min_order_quantity}
             {...register("min_order_quantity")}
           />
-         
+
           <input
             className="mb-3 py-2"
             placeholder="Your order Quantity"
