@@ -18,7 +18,7 @@ import AddReview from "./components/pages/DashBoard/AddReview/AddReview";
 import MyOrder from "./components/pages/DashBoard/MyOrder/MyOrder";
 import MyProfile from "./components/pages/DashBoard/MyProfile/MyProfile";
 import BuyTool from "./components/pages/BuyTool/BuyTool";
-
+import Payment from "./components/pages/Payment/Payment/Payment";
 
 function App() {
   return (
@@ -42,6 +42,14 @@ function App() {
           element={
             <RequireAuth>
               <BuyTool></BuyTool>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/payment/:id"
+          element={
+            <RequireAuth>
+            <Payment></Payment>
             </RequireAuth>
           }
         ></Route>

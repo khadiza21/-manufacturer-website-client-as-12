@@ -12,6 +12,7 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth);
+    localStorage.removeItem('accessToken');
   };
 
   return (
