@@ -35,7 +35,6 @@ const Tool = (props) => {
         <h5>Available Quantity: {avail_quantity}</h5>
         <h5>Price: {price}</h5>
       </div>
-
       <div>
         <Button
           className="btn btn-success"

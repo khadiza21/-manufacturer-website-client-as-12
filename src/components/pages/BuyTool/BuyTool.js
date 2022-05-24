@@ -16,11 +16,12 @@ const BuyTool = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setTool(data));
-  }, []);
+  }, [id]);
 
   const onSubmit = (data) => {
    
-    console.log(data);
+    console.log('click');
+    console.log('click',data);
     const url = `http://localhost:5000/orders`;
     fetch(url, {
       method: "POST",
