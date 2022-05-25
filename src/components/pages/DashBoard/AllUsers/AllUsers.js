@@ -32,6 +32,7 @@ const AllUsers = () => {
           <thead className="rounded">
             <tr className="rounded">
             
+              <th className="fs-4">User No</th>
               <th className="fs-4">User Email</th>
               <th className="fs-4">Make Admin</th>
              
@@ -40,8 +41,9 @@ const AllUsers = () => {
 
           <tbody>
             {
-            users.map((user) => (
+            users.map((user,index) => (
               <UserRow key={user._id}
+              index={index}
                user={user} refetch={refetch}></UserRow>
             ))
             }
