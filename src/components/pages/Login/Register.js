@@ -1,164 +1,129 @@
 import React from "react";
+import { Button, Form } from "react-bootstrap";
 import {
   useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle,
+ 
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
+
 import { Link,  useLocation,  useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import useToken from "../../Hooks/useToken";
 import Loading from "../../shared/Loading";
+import SocilalLogin from "./SocilalLogin";
 
 
 const Register = () => {
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    // error,
+  ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
- const [token] = useToken(user || gUser)
+  const [updateProfile, updating] = useUpdateProfile(auth);
+  // updateError
+const [token] = useToken(user); 
   const navigate = useNavigate();
+  const location = useLocation(); 
 
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
- 
-  let signInError;
+  let from = location.state?.from?.pathname || "/"; 
 
-  if (loading || gLoading || updating) {
+  const navigateLogin = () => {
+    navigate("/login");
+  };
+
+//   if (user) {
+//     navigate(from, { replace: true });
+//   }
+ if (loading || updating) {
     return <Loading></Loading>;
   }
 
-  if (error || gError || updateError) {
-    signInError = (
-      <p className="text-danger">
-        <small>
-          {error?.message || gError?.message || updateError?.message}
-        </small>
-      </p>
-    );
-  }
-
   if (token) {
-    console.log(user || gUser);
-   navigate(from, { replace: true });
+    // navigate('/home');
+    navigate(from, { replace: true });
   }
 
-  const onSubmit = async (data) => {
-    await createUserWithEmailAndPassword(data.email, data.password);
-    await updateProfile({ displayName: data.name });
-    console.log("update done");
-    navigate("/home");
+
+ 
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+    // await updateProfile({ displayName, photoURL });
+    // alert('Updated profile');
+    console.log("Updated profile");
+    toast("Account Created Successfully!")
+
+
+    console.log(name, email, password);
   };
 
   return (
-    <div className="container mx-auto mt-5 pt-5">
-      <h2 className="text-center text-success  fs-1 pb-5 py-3 fw-bold">
-        Sign Up
-      </h2>
+    <div className="container w-100 mx-auto mt-5 pt-5">
+      <h3 className="text-danger text-center fw-bold mt-2">Please Register</h3>
+      <Form onSubmit={handleRegister} className="mt-2 pt-2">
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            // ref={emailRef}
+            name="name"
+            type="text"
+            placeholder="Enter Name"
+            required
+          />
+        </Form.Group>
 
-      <form
-        className="d-flex flex-column w-75 mx-auto"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="ps-2 py-2 "
-          {...register("name", {
-            required: {
-              value: true,
-              message: "Name is Required",
-            },
-          })}
-        />
-        <label className="mb-3">
-          {errors.name?.type === "required" && (
-            <span className=" text-danger">{errors.name.message}</span>
-          )}
-        </label>
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="ps-2 py-2 "
-          {...register("email", {
-            required: {
-              value: true,
-              message: "Email is Required",
-            },
-            pattern: {
-              value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-              message: "Provide a valid Email",
-            },
-          })}
-        />{" "}
-        <label className="mb-3">
-          {errors.email?.type === "required" && (
-            <span className=" text-danger">{errors.email.message}</span>
-          )}
-          {errors.email?.type === "pattern" && (
-            <span className=" text-danger">{errors.email.message}</span>
-          )}
-        </label>
-        <input
-          type="password"
-          placeholder="Password"
-          className="ps-2 py-2 "
-          {...register("password", {
-            required: {
-              value: true,
-              message: "Password is Required",
-            },
-            minLength: {
-              value: 6,
-              message: "Must be 6 characters or longer",
-            },
-          })}
-        />{" "}
-        <label className="mb-3">
-          {errors.password?.type === "required" && (
-            <span className="text-danger">{errors.password.message}</span>
-          )}
-          {errors.password?.type === "minLength" && (
-            <span className=" text-danger">{errors.password.message}</span>
-          )}
-        </label>
-        {signInError}
-        <input
-          className="btn btn-dark  fw-bold text-light"
-          type="submit"
-          value="Sign Up"
-        />
-      </form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            // ref={emailRef}
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
 
-      <p className="mt-5 w-75 fw-bold mx-auto">
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            // ref={passwordRef}
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <Button variant="success" type="submit" className='fw-bold'>
+          Register
+        </Button>
+      </Form>
+      <p className="my-2">
         Already have an account?{" "}
         <Link
           to="/login"
-          //   onClick={navigateLogin}
+          onClick={navigateLogin}
           className="text-decoration-none text-danger pe-auto"
         >
           Please LogIn
         </Link>{" "}
       </p>
-
-      <div className=" fw-bold d-flex align-items-center w-75 mx-auto">
-        <div style={{ height: "1px" }} className="bg-primary w-50"></div>
-        <p className="mt-2 px-2 ">or</p>
-        <div style={{ height: "1px" }} className="bg-primary w-50"></div>
-      </div>
-
-      <button
-        onClick={() => signInWithGoogle()}
-        className="btn btn-success w-75 mb-5 fw-bold d-block mx-auto my-2"
-      >
-        Continue with Google
-      </button>
+      <SocilalLogin></SocilalLogin>
     </div>
   );
 };

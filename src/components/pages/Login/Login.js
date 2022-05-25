@@ -1,60 +1,63 @@
-import React, { useEffect, useRef } from "react";
-import { useForm } from "react-hook-form";
+import React, {  useRef } from "react";
+
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
+  
 } from "react-firebase-hooks/auth";
 import Loading from "../../shared/Loading";
-import { sendPasswordResetEmail } from "firebase/auth";
+// import { sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import useToken from "../../Hooks/useToken";
+import { Button, Form } from "react-bootstrap";
+import SocilalLogin from "./SocilalLogin";
 
 const Login = () => {
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  
 
-  const [token] = useToken(user || gUser);
-
-  let signInError;
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
   const location = useLocation();
+
   let from = location.state?.from?.pathname || "/";
+  let errorElement;
 
-  useEffect(() => {
-    if (token) {
-      navigate(from, { replace: true });
-    }
-  }, [token, from, navigate]);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
-  if (loading || gLoading) {
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  const [token] = useToken(user);
+  if (loading || sending) {
     return <Loading></Loading>;
   }
 
-  if (error || gError) {
-    signInError = (
-      <p className="text-danger">
-        <small>{error?.message || gError?.message}</small>
-      </p>
-    );
+  if (token) {
+    navigate(from, { replace: true });
   }
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+  if (error) {
+    errorElement = <p className="text-danger"> Error: {error?.message} </p>;
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    await signInWithEmailAndPassword(email, password);
+  };
+
+  const navigateRegister = (event) => {
+    navigate("/register");
   };
 
   const resetPassword = async () => {
     const email = emailRef.current.value;
-    console.log(email);
     if (email) {
       await sendPasswordResetEmail(email);
       toast("Sent email");
@@ -63,105 +66,62 @@ const Login = () => {
     }
   };
   return (
-    <div className="container mx-auto mt-5 pt-5">
-      <h2 className="text-center text-success  fs-1 pb-5 py-3 fw-bold">
-        Login!
-      </h2>
-      <form
-        className="d-flex flex-column w-75 mx-auto"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <input
+    <div className="container w-100 mx-auto my-5 py-5">
+    <h3 className="text-danger text-center mt-2 fw-bold">Please LogIn</h3>
+    <Form onSubmit={handleSubmit} className="mt-5 pt-5">
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control
           ref={emailRef}
           type="email"
-          placeholder="Your Email"
-          className="ps-2 py-2 "
-          {...register("email", {
-            required: {
-              value: true,
-              message: "Email is Required",
-            },
-            pattern: {
-              value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-              message: "Provide a valid Email",
-            },
-          })}
+          placeholder="Enter email"
+          required
         />
-        <label className="mb-3">
-          {errors.email?.type === "required" && (
-            <span className="text-danger">{errors.email.message}</span>
-          )}
-          {errors.email?.type === "pattern" && (
-            <span className="text-danger">{errors.email.message}</span>
-          )}
-        </label>
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
 
-        <input
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
           ref={passwordRef}
           type="password"
           placeholder="Password"
-          className="ps-2 py-2 "
-          {...register("password", {
-            required: {
-              value: true,
-              message: "Password is Required",
-            },
-            minLength: {
-              value: 6,
-              message: "Must be 6 characters or longer",
-            },
-          })}
+          required
         />
-        <label className="mb-3">
-          {errors.password?.type === "required" && (
-            <span className="text-danger">{errors.password.message}</span>
-          )}
-          {errors.password?.type === "minLength" && (
-            <span className="text-danger">{errors.password.message}</span>
-          )}
-        </label>
+      </Form.Group>
 
-        {signInError}
-        <input
-          className="btn btn-success fw-bold  text-light"
-          type="submit"
-          value="Login"
-        />
-      </form>
-
-      <p className="mt-5 fw-bold w-75 mx-auto">
-        New to Bio Earth?{" "}
-        <Link
-          to="/register"
-          //   onClick={navigateRegister}
-          className="text-decoration-none text-danger pe-auto"
-        >
-          Please Register
-        </Link>{" "}
-      </p>
-
-      <p className=" fw-bold w-75 mx-auto">
-        Forget Passsword?{" "}
-        <button
-          onClick={resetPassword}
-          className="fw-bold btn btn-link text-decoration-none text-danger pe-auto"
-        >
-          Reset Passsword
-        </button>{" "}
-      </p>
-      <div className=" fw-bold d-flex align-items-center w-75 mx-auto">
-        <div style={{ height: "1px" }} className="bg-primary w-50"></div>
-        <p className="mt-2 px-2 ">or</p>
-        <div style={{ height: "1px" }} className="bg-primary w-50"></div>
-      </div>
-
-      <button
-        onClick={() => signInWithGoogle()}
-        className="btn btn-success w-75 mb-5 fw-bold d-block mx-auto "
+      <Button
+        className="d-block mx-auto w-50 fw-bold"
+        variant="success"
+        type="submit"
       >
-        Continue with Google
-      </button>
-    </div>
+        LogIn
+      </Button>
+    </Form>
+    <p className="my-2">
+      New to Tralve BK?{" "}
+      <Link
+        to="/register"
+        onClick={navigateRegister}
+        className="text-decoration-none text-danger pe-auto"
+      >
+        Please Register
+      </Link>{" "}
+    </p>
+    <p className="my-2">
+      Forget Passsword?{" "}
+      <button
+        onClick={resetPassword}
+        className=" btn btn-link text-decoration-none text-danger pe-auto"
+      >
+        Reset Passsword
+      </button>{" "}
+    </p>
+    {errorElement}
+    <SocilalLogin></SocilalLogin>
+  </div>
   );
 };
 
