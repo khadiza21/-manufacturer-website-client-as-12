@@ -3,77 +3,56 @@ import React, { useEffect, useState } from 'react';
  import { Table } from 'react-bootstrap';
  import './MyOrder.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
-// import { useNavigate } from 'react-router-dom';
-//import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { signOut } from 'firebase/auth';
+import axiosPrivate from '../../../../api/axiosPrivate';
+
 
 const MyOrder = () => {
 
-    const [user] = useAuthState(auth);
-    const [orders, setOrders] = useState([]);
-    const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+  const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const email = user.email
-        const getOrders = async () => {
-            const url = `http://localhost:5000/orders?email=${email}`
-            const { data } = await axios.get(url)
-            setOrders(data)
+  useEffect(() => {
+    const getOrder = async () => {
+      const email = user?.email;
 
+      const url = `http://localhost:5000/orders?email=${email}`;
+      try {
+        const { data } = await axiosPrivate.get(url);
+        setOrders(data);
+      } catch (error) {
+        console.log(error.message);
+        if (error.response.status === 401 || error.response.status === 403) {
+          signOut(auth);
+          navigate("/login");
         }
-        getOrders();
-    }, [user,orders])
-  
-    // useEffect(() => {
-    //     if(user){
-    //         fetch(`http://localhost:5000/orders?email=${user.email}`,{
-    //             method:'GET',
-    //             headers: {
-    //                 'authorization':`Bearer ${localStorage.getItem('accessToken')}`
-    //             }
-    //         })
-    //         .then(res => res.json())
-    //         .then(data => setOrders(data));
-    //     }
-    // //   const getItems = async () => {
-    // //     const email = user?.email;
-  
-    // //     const url = `https://cryptic-stream-01124.herokuapp.com/myitems?email=${email}`;
-    // //     try {
-    // //       const { data } = await axiosPrivate.get(url);
-    // //       setItems(data);
-    // //     } catch (error) {
-    // //       console.log(error.message);
-    // //       if (error.response.status === 401 || error.response.status === 403) {
-    // //         signOut(auth);
-    // //         navigate("/login");
-    // //       }
-    // //     }
-    // //   };
-    // //   getItems();
-    // }, [user]);
-  
-    const handleDelete = (id) => {
-      const proceed = window.confirm("Are You Sure?");
-      if (proceed) {
-        const url = `http://localhost:5000/orders/${id}`;
-        fetch(url, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((deleteOrder) => {
-            console.log(deleteOrder);
-            toast("Deleted Your One Order!");
-            const remaining = orders.filter((order) => order._id !== id);
-            setOrders(remaining);
-          });
       }
     };
-  
+    getOrder();
+  }, [user]);
+
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are You Sure?");
+    if (proceed) {
+     //  const url = `https://cryptic-stream-01124.herokuapp.com/inventory/${id}`;
+       const url = `http://localhost:5000/orders/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((deleteItem) => {
+          console.log(deleteItem);
+          toast("Delivered One Item!");
+          const remaining = orders.filter((order) => order._id !== id);
+          setOrders(remaining);
+        });
+    }
+  };
+   
    const handlePaymet = (id) => {
        navigate(`/payment/${id}`);
    }
