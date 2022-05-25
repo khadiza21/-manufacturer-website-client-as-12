@@ -32,9 +32,9 @@ const AllUsers = () => {
           <thead className="rounded">
             <tr className="rounded">
             
-              <th>Email</th>
-              <th>Admin</th>
-              <th>Remove </th>
+              <th className="fs-4">User Email</th>
+              <th className="fs-4">Make Admin</th>
+             
             </tr>
           </thead>
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useToken = (user) => {
-  // "https://cryptic-stream-01124.herokuapp.com/login",
+ 
   const [token, setToken] = useState("");
   useEffect(() => {
     const getToken = async () => {

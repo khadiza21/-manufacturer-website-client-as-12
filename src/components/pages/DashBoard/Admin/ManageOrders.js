@@ -4,7 +4,8 @@ import { useQuery } from 'react-query';
 import Loading from '../../../shared/Loading';
 
 const ManageOrders = () => {
-    const { data: orders, isLoading } = useQuery('orders', () => fetch('http://localhost:5000/orders/admin').then(res => res.json()));
+    const { data: orders, isLoading } = useQuery('orders', () => 
+    fetch('http://localhost:5000/orders/admin').then(res => res.json()));
 
     if (isLoading) {
         return <Loading></Loading>

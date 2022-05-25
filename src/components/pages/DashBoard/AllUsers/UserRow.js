@@ -26,15 +26,13 @@ const UserRow = ({ user,refetch }) => {
   return (
     <tr>
      
-      <td>{email}</td>
+      <td className="fw-bold">{email}</td>
       <td>
-       { role !== 'admin' && <button onClick={makeAdmin} className="btn btn-success">
+       { role !== 'admin' && <button onClick={makeAdmin} className="btn btn-success fw-bold">
           Make Admin
         </button> }
       </td>
-      <td className="pb-0 fw-bold ">
-        <i className="fa-solid fa-trash-can fs-5"></i>
-      </td>
+    
     </tr>
   );
 };
