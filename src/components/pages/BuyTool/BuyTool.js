@@ -13,7 +13,7 @@ const BuyTool = () => {
 
   const { register, handleSubmit,reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    console.log("from data ",data);
     const url = `http://localhost:5000/orders`;
     fetch(url, {
       method: "post", //thakle update korbe na thakle add koreb put
@@ -29,13 +29,14 @@ const BuyTool = () => {
         reset();
       });
   };
-  const { data: product, isLoading } = useQuery("product", () =>
+  const { data: product, isLoading } = useQuery(["product",id], () =>
     fetch(`http://localhost:5000/tools/${id}`).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
+
 
   return (
     <div className="container mx-auto my-5 pb-5">
@@ -63,7 +64,7 @@ const BuyTool = () => {
         </div>
       </div>
       <div className="">
-        {console.log(user)}
+     
 
         <div className="w-50 mx-auto my-4">
           <form
@@ -85,10 +86,19 @@ const BuyTool = () => {
               <div className="flex justify-center items-center gap-2">
                 <label>Product name:</label>
                 <input
+                  placeholder="Vendor"
+                  value={product.vendor}
+                  className="border p-2 mb-2 "
+                  {...register("vendor", { required: true })}
+                />
+              </div>
+              <div className="flex justify-center items-center gap-2">
+                <label>Product name:</label>
+                <input
                   placeholder="Name"
                   value={product.name}
                   className="border p-2 mb-2 "
-                  {...register("name", { required: true })}
+                  {...register("toolsname", { required: true })}
                 />
               </div>
 

@@ -86,7 +86,7 @@ const MyOrder = () => {
                 <td className="">
                   <img src={order.img} alt="" className=" img-set img-fluid" />
                 </td>
-                <td className="pb-0 pt-3 fw-bold">{console.log(order.name) }</td>
+                <td className="pb-0 pt-3 fw-bold">{order.toolsname}</td>
                 <td className="pb-0 pt-3 fw-bold"><sup>$</sup>{order.price}</td>
                 <td className="pb-0 pt-3 fw-bold">{order.order_quantity}</td>
                 <td className="pb-0 pt-3 fw-bold">{order.material}</td>
