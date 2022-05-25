@@ -31,7 +31,7 @@ const AllUsers = () => {
         <Table hover size="sm" className="text-center" striped>
           <thead className="rounded">
             <tr className="rounded">
-              <th>SI</th>
+            
               <th>Email</th>
               <th>Admin</th>
               <th>Remove </th>
@@ -41,7 +41,8 @@ const AllUsers = () => {
           <tbody>
             {
             users.map((user) => (
-              <UserRow key={user._id} user={user} refetch={refetch}></UserRow>
+              <UserRow key={user._id}
+               user={user} refetch={refetch}></UserRow>
             ))
             }
           </tbody>

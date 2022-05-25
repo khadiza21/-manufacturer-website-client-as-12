@@ -6,7 +6,7 @@ import Loading from "../../../shared/Loading";
 
 const ManageProducts = () => {
     const [atools, setTools] = useState([]);
-  const { data: tools, isLoading } = useQuery("tools", () =>
+  const { data: tools, isLoading,refetch } = useQuery("tools", () =>
     fetch("http://localhost:5000/tools").then((res) => res.json())
   );
 
@@ -21,12 +21,16 @@ const handleDelete = (id) => {
        const url = `http://localhost:5000/tools/${id}`;
       fetch(url, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
       })
         .then((res) => res.json())
         .then((deleteItem) => {
           console.log(deleteItem);
           toast("Deleted One Item!");
           const remaining = atools.filter((order) => order._id !== id);
+          refetch();
           setTools(remaining);
         });
     }
@@ -49,7 +53,7 @@ const handleDelete = (id) => {
           </thead>
 
           {tools.map((tool) => (
-            <tbody key={tool._id}>
+            <tbody key={tool._id} refetch={refetch}>
               <td className="">
                 <img src={tool.img} alt="" className=" img-set img-fluid" />
               </td>
