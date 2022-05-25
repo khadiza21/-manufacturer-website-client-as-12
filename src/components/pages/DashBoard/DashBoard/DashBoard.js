@@ -1,12 +1,17 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
+import useAdmin from "../../../Hooks/useAdmin";
 import CustonLink from "../../../shared/CustonLink";
+import {useAuthState} from "react-firebase-hooks/auth";
+import auth from "../../../../firebase.init";
+
 
 const DashBoard = () => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   return (
     <div>
-     
       <div>
         <Navbar bg="light" expand="lg">
           <Container className="px-5" fluid>
@@ -20,12 +25,14 @@ const DashBoard = () => {
                 <CustonLink to="/dashboard">Add Review</CustonLink>
                 <CustonLink to="/dashboard/myorder">My Order</CustonLink>
                 <CustonLink to="/dashboard/profile">Profile</CustonLink>
+               {admin && <CustonLink to="/dashboard/users">All User</CustonLink>}
+             
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
       </div>
-       <div>
+      <div>
         <Outlet></Outlet>
       </div>
     </div>

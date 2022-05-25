@@ -1,0 +1,54 @@
+import React from "react";
+import { Table } from "react-bootstrap";
+import { useQuery } from "react-query";
+import Loading from "../../../shared/Loading";
+import UserRow from "./UserRow";
+
+const AllUsers = () => {
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch("http://localhost:5000/user",{ 
+        method:'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  return (
+    <div className="container my-5">
+      <h2 className="py-3 text-success fs-2 pb-5  text-center fw-bold">
+        All Users:
+        {users.length}
+      </h2>
+
+      <div className=" table-responsive">
+        <Table hover size="sm" className="text-center" striped>
+          <thead className="rounded">
+            <tr className="rounded">
+              <th>SI</th>
+              <th>Email</th>
+              <th>Admin</th>
+              <th>Remove </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {
+            users.map((user) => (
+              <UserRow key={user._id} user={user} refetch={refetch}></UserRow>
+            ))
+            }
+          </tbody>
+        </Table>
+      </div>
+    </div>
+  );
+};
+
+export default AllUsers;

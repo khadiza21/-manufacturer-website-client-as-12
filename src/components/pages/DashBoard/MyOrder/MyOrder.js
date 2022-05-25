@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
- import { Table } from 'react-bootstrap';
- import './MyOrder.css';
+import { Table } from 'react-bootstrap';
+import './MyOrder.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../firebase.init';
 import { toast } from 'react-toastify';
@@ -38,7 +38,7 @@ const MyOrder = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {
-     //  const url = `https://cryptic-stream-01124.herokuapp.com/inventory/${id}`;
+    
        const url = `http://localhost:5000/orders/${id}`;
       fetch(url, {
         method: "DELETE",
