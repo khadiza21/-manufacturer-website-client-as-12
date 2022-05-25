@@ -46,7 +46,7 @@ const handleDelete = (id) => {
               <th className=" img">Image</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Order Quantity</th>
+              <th>Vendor</th>
               <th>Material</th>
               <th>Delete</th>
             </tr>
@@ -62,7 +62,7 @@ const handleDelete = (id) => {
                 <sup>$</sup>
                 {tool.price}
               </td>
-              <td className="pb-0 pt-3 fw-bold">{tool.order_quantity}</td>
+              <td className="pb-0 pt-3 fw-bold">{tool.vendor}</td>
               <td className="pb-0 pt-3 fw-bold">{tool.material}</td>
               <td className="pb-0 fw-bold ">
                   <i
