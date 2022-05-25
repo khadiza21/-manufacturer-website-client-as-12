@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Review from "../Review/Review";
 
-import './Reviews.css'
+import "./Reviews.css";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -18,14 +18,9 @@ const Reviews = () => {
         Client Review {reviews.length}
       </h2>
       <div className=" container tools-container my-3 pb-5">
-          {reviews.map(review => <Review
-           key={review._id} review={review}
-          >
-             
-          </Review>)}
-        {/* {reviews.map((review) => (
-          <Review key={review._id} ></Review>
-        ))} */}
+        {reviews.map((review) => (
+          <Review key={review._id} review={review}></Review>
+        ))}
       </div>
     </div>
   );
