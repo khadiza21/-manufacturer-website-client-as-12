@@ -3,9 +3,8 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import useAdmin from "../../../Hooks/useAdmin";
 import CustonLink from "../../../shared/CustonLink";
-import {useAuthState} from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
-
 
 const DashBoard = () => {
   const [user] = useAuthState(auth);
@@ -22,11 +21,29 @@ const DashBoard = () => {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <CustonLink to="/dashboard">Add Review</CustonLink>
-                <CustonLink to="/dashboard/myorder">My Order</CustonLink>
-                <CustonLink to="/dashboard/profile">Profile</CustonLink>
-               {admin && <CustonLink to="/dashboard/users">All User</CustonLink>}
-             
+                 <CustonLink to="/dashboard">Profile</CustonLink>
+                {!admin && (
+                  <>
+                    <CustonLink to="/dashboard/review">Add Review</CustonLink>
+                    <CustonLink to="/dashboard/myorder">My Order</CustonLink>
+                   
+                  </>
+                )}
+
+                {admin && (
+                  <>
+                    <CustonLink to="/dashboard/users">All User</CustonLink>
+                    <CustonLink to="/dashboard/addproduct">
+                      Add New Product
+                    </CustonLink>
+                    <CustonLink to="/dashboard/manageorder">
+                      Manage All Order
+                    </CustonLink>
+                    <CustonLink to="/dashboard/manageproduct">
+                      Manage Product
+                    </CustonLink>
+                  </>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>

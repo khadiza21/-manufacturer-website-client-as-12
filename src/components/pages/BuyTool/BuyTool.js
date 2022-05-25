@@ -11,7 +11,7 @@ const BuyTool = () => {
   const [user] = useAuthState(auth);
   const { id } = useParams();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
     const url = `http://localhost:5000/orders`;
@@ -26,6 +26,7 @@ const BuyTool = () => {
       .then((data) => {
         console.log("success", data);
         toast("Place order");
+        reset();
       });
   };
   const { data: product, isLoading } = useQuery("product", () =>
@@ -46,6 +47,7 @@ const BuyTool = () => {
           <div>
             <h3 className="fw-bold text-center my-5">
               Tools Name: {product.name}
+             
             </h3>
             <img
               src={product.img}
@@ -68,16 +70,10 @@ const BuyTool = () => {
             className="flex flex-col mb-4 px-3 "
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h2>Purchase Tool</h2>
+           
             <p>{user.displayName}</p>
             <p>{user.email}</p>
-            <div>
-              <img
-                style={{ height: "300px ", width: "100%" }}
-                src={product.img}
-                alt=""
-              />
-            </div>
+            
 
             <input
               placeholder="Name"
@@ -137,18 +133,18 @@ const BuyTool = () => {
               </div>
 
               <div className="flex justify-center items-center gap-2 ">
-                <label>Price :</label>
+                <label>photoURL :</label>
                 <input
-                  placeholder="Price"
+                  placeholder="Photo Url"
                   value={product.img}
                   className="border p-2 mb-2 "
                   {...register("img", { required: true })}
                 />
               </div>
               <div className="flex justify-center items-center gap-2 ">
-                <label>Price :</label>
+                <label>Material :</label>
                 <input
-                  placeholder="Price"
+                  placeholder="Material"
                   value={product.material}
                   className="border p-2 mb-2 "
                   {...register("material", { required: true })}
@@ -205,131 +201,7 @@ const BuyTool = () => {
      
       {console.log(user)} */}
 
-          {/* <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="d-flex flex-column w-75 mx-auto"
-        >
-          <input
-            // readOnly
-            value={user?.email}
-            className="mb-3 py-2 ps-2"
-            {...register("email")}
-          />
-          <input
-            // readOnly
-            value={user?.uid}
-            className="mb-3 py-2 ps-2"
-            {...register("uid")}
-          />
-          <input
-            // readOnly
-            value={user?.displayName}
-            className="mb-3 py-2 ps-2"
-            {...register("displayName")}
-          />
-
-          <input
-            name="name"
-            value={tool?.name}
-            className="mb-3 py-2 ps-2"
-            {...register("name")}
-          />
-
-          <input
-            className="mb-3 py-2 ps-2"
-            value={tool.img}
-            {...register("img")}
-          />
-
-          <label htmlFor="Size" className="text-success">
-            Size
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.size}
-            {...register("size")}
-          />
-
-          <label htmlFor="Metarial" className="text-success">
-            Material
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.material}
-            {...register("material")}
-          />
-
-          <label htmlFor="Vendor" className="text-success">
-            Vendor
-          </label>
-          <input
-            className="mb-3 py-2 mt-1"
-            value={tool.vendor}
-            {...register("vendor")}
-          />
-          <label htmlFor="Type" className="text-success">
-            Type
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.type}
-            {...register("type")}
-          />
-
-          <label htmlFor="Availity" className="text-success">
-            Availity
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.availity}
-            {...register("availity")}
-          />
-          <label htmlFor="Description" className="text-success">
-            Description
-          </label>
-          <textarea
-            className="mb-3 py-2"
-            value={tool?.description}
-            {...register("description")}
-          />
-          <label htmlFor="Minimum Order Quantity" className="text-success">
-            Minimum Order Quantity
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.min_order_quantity}
-            {...register("min_order_quantity")}
-          />
-          <label htmlFor="Available Quantity" className="text-success">
-            Available Quantity
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.avail_quantity}
-            {...register("avail_quantity")}
-          />
-
-<label htmlFor="Price" className="text-success">
-            Price
-          </label>
-          <input
-            className="mb-3 py-2"
-            value={tool.price}
-            {...register("price")}
-          />
-
-          <input
-            className="mb-3 py-2"
-            placeholder="Your order Quantity"
-            {...register("order_quantity")}
-          />
-
-          <input
-            className="btn btn-success mb-3 py-2 fw-bold"
-            type="submit"
-            value="Make Your Order"
-          />
-        </form> */}
+   
         </div>
       </div>
     </div>

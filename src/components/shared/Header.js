@@ -29,7 +29,7 @@ const Header = () => {
             navbarScroll
           >
             <CustonLink to="/">Home</CustonLink>
-            <CustonLink to="/tools">Tools</CustonLink>
+           
             <CustonLink to="/blog">Blogs</CustonLink>
             <CustonLink to="/developerimg">About Developer</CustonLink>
 
