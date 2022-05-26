@@ -85,6 +85,7 @@ const CheckoutForm = ({ toolsname, _id, price, email }) => {
       console.log(paymentIntent);
       setSuccess("Congrats! Your payment is completed.");
 
+      
       //store payment on database
       const payment = {
         appointment: _id,

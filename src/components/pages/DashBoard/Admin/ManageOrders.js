@@ -6,6 +6,7 @@ import Loading from "../../../shared/Loading";
 
 const ManageOrders = () => {
   const [aorders, setOrders] = useState([]);
+  // const [reload, setIsReload] = useState(true);
   const {
     data: orders,
     isLoading,
@@ -41,7 +42,7 @@ const ManageOrders = () => {
     }
   };
 
-  const handleStatus = () => {};
+
 
   return (
     <div className="container my-5">
@@ -90,7 +91,7 @@ const ManageOrders = () => {
                     <br />
                     {order.price && order.paid && (
                       <button
-                        onClick={handleStatus}
+                     //   onClick={handleStatus}
                         className="btn btn-success bg-success fw-bold mt-2"
                       >
                         Shipted
