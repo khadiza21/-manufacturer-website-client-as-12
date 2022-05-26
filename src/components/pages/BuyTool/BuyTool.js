@@ -84,7 +84,7 @@ const BuyTool = () => {
             />
             <div className="flex flex-col justify-start items-start ">
               <div className="flex justify-center items-center gap-2">
-                <label>Product name:</label>
+                <label>Vendor name:</label>
                 <input
                   placeholder="Vendor"
                   value={product.vendor}

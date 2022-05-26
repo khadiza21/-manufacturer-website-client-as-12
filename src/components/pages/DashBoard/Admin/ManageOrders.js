@@ -39,6 +39,31 @@ const ManageOrders = () => {
     }
   };
 
+
+  const handleStatus = () => {
+    // const bq = parseInt(inventory.quantity);
+    // const quantity = bq - 1;
+    // console.log(quantity);
+    // const quantity2 = { quantity };
+    // console.log(quantity2);
+
+    // const url = `https://cryptic-stream-01124.herokuapp.com/inventory/${id}`;
+    // console.log(url);
+    // fetch(url, {
+    //   method: "PUT", // or 'PUT'
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(quantity2),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setIsReload(quantity);
+    //     toast("Delivered One Item!");
+    //     console.log("success", data);
+    //   });
+  };
+
   return (
     <div className="container my-5">
       <h1 className=" text-center py-5">Manage orders: {orders.length}</h1>
@@ -85,7 +110,7 @@ const ManageOrders = () => {
                     )}
                     <br />
                     {order.price && order.paid && (
-                      <button className="btn btn-success bg-success fw-bold mt-2">
+                      <button onClick={handleStatus} className="btn btn-success bg-success fw-bold mt-2">
                         Shipted
                       </button>
                     )}

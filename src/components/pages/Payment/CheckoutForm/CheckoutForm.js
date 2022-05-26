@@ -93,7 +93,7 @@ const CheckoutForm = ({toolsname,_id,price,email}) => {
             
             //store payment on database
             const payment = {
-                toolspaid: _id,
+              appointment: _id,
                 transactionId: paymentIntent.id
             }
             fetch(`http://localhost:5000/orders/${_id}`, {
