@@ -4,7 +4,7 @@ import "./MyOrder.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 import { toast } from "react-toastify";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import axiosPrivate from "../../../../api/axiosPrivate";
 
@@ -17,7 +17,7 @@ const MyOrder = () => {
     const getOrder = async () => {
       const email = user?.email;
 
-      const url = `http://localhost:5000/orders?email=${email}`;
+      const url = `https://fathomless-plains-16450.herokuapp.com/orders?email=${email}`;
       try {
         const { data } = await axiosPrivate.get(url);
         setOrders(data);
@@ -35,7 +35,7 @@ const MyOrder = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {
-      const url = `http://localhost:5000/orders/${id}`;
+      const url = `https://fathomless-plains-16450.herokuapp.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -92,9 +92,9 @@ const MyOrder = () => {
               <td className="pb-0 pt-3 fw-bold">
                 {order.price && !order.paid && (
                   <i
-                  onClick={() => handlePaymet(order._id)}
-                   class="fa-solid fa-cart-shopping fs-5"
-                 ></i>
+                    onClick={() => handlePaymet(order._id)}
+                    class="fa-solid fa-cart-shopping fs-5"
+                  ></i>
                 )}
                 {order.price && order.paid && (
                   <h3 className="text-success fw-bold">PAID</h3>
@@ -108,14 +108,12 @@ const MyOrder = () => {
                   ></i>
                 </td> */}
               <td className="pb-0 fw-bold  pt-3">
-
-              {order.price && !order.paid && (
-                    <i
+                {order.price && !order.paid && (
+                  <i
                     onClick={() => handleDelete(order._id)}
                     class="fa-solid fa-trash-can fs-5"
                   ></i>
                 )}
-             
               </td>
             </tbody>
           ))}

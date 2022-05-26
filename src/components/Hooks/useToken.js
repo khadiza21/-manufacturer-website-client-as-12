@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useToken = (user) => {
- 
   const [token, setToken] = useState("");
   useEffect(() => {
     const getToken = async () => {
@@ -11,15 +10,18 @@ const useToken = (user) => {
       const currentUser = { email: email };
 
       if (email) {
-        const { data } = await axios.post("http://localhost:5000/login", {
-          email,
-        });
+        const { data } = await axios.post(
+          "https://fathomless-plains-16450.herokuapp.com/login",
+          {
+            email,
+          }
+        );
         setToken(data.accessToken);
         localStorage.setItem("accessToken", data.accessToken);
       }
 
       if (email) {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://fathomless-plains-16450.herokuapp.com/user/${email}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

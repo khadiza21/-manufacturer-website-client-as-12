@@ -1,39 +1,40 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const UserRow = ({ user,refetch,index }) => {
-  const { email ,role} = user;
+const UserRow = ({ user, refetch, index }) => {
+  const { email, role } = user;
 
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://fathomless-plains-16450.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-    .then((res) => {
-        if(res.status === 403){
-            toast.error('Failed to Make an admin');
+      .then((res) => {
+        if (res.status === 403) {
+          toast.error("Failed to Make an admin");
         }
-        return res.json()})   
-    .then(data => {
+        return res.json();
+      })
+      .then((data) => {
         if (data.modifiedCount > 0) {
-            refetch();
-            toast.success(`Successfully made an admin`);
+          refetch();
+          toast.success(`Successfully made an admin`);
         }
-    })
- };
+      });
+  };
   return (
     <tr>
-     
-      <td className="fw-bold">{index+1}</td>
+      <td className="fw-bold">{index + 1}</td>
       <td className="fw-bold">{email}</td>
       <td>
-       { role !== 'admin' && <button onClick={makeAdmin} className="btn btn-success fw-bold">
-          Make Admin
-        </button> }
+        {role !== "admin" && (
+          <button onClick={makeAdmin} className="btn btn-success fw-bold">
+            Make Admin
+          </button>
+        )}
       </td>
-    
     </tr>
   );
 };

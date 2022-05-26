@@ -10,11 +10,11 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/user",{ 
-        method:'GET',
-        headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        }
+    fetch("https://fathomless-plains-16450.herokuapp.com/user", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     }).then((res) => res.json())
   );
   if (isLoading) {
@@ -31,22 +31,21 @@ const AllUsers = () => {
         <Table hover size="sm" className="text-center" striped>
           <thead className="rounded">
             <tr className="rounded">
-            
               <th className="fs-4">User No</th>
               <th className="fs-4">User Email</th>
               <th className="fs-4">Make Admin</th>
-             
             </tr>
           </thead>
 
           <tbody>
-            {
-            users.map((user,index) => (
-              <UserRow key={user._id}
-              index={index}
-               user={user} refetch={refetch}></UserRow>
-            ))
-            }
+            {users.map((user, index) => (
+              <UserRow
+                key={user._id}
+                index={index}
+                user={user}
+                refetch={refetch}
+              ></UserRow>
+            ))}
           </tbody>
         </Table>
       </div>

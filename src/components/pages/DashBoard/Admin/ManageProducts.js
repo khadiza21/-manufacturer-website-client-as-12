@@ -5,28 +5,30 @@ import { toast } from "react-toastify";
 import Loading from "../../../shared/Loading";
 
 const ManageProducts = () => {
-    const [atools, setTools] = useState([]);
-  const { data: tools, isLoading,refetch } = useQuery("tools", () =>
-    fetch("http://localhost:5000/tools").then((res) => res.json())
+  const [atools, setTools] = useState([]);
+  const {
+    data: tools,
+    isLoading,
+    refetch,
+  } = useQuery("tools", () =>
+    fetch("https://fathomless-plains-16450.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
-    return <Loading></Loading>
-}
+    return <Loading></Loading>;
+  }
 
-
-
-
-const handleDelete = (id) => {
+  const handleDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {
-    
-       const url = `http://localhost:5000/tools/${id}`;
+      const url = `https://fathomless-plains-16450.herokuapp.com/tools/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
       })
         .then((res) => res.json())
         .then((deleteItem) => {
@@ -38,10 +40,12 @@ const handleDelete = (id) => {
         });
     }
   };
-   
+
   return (
     <div className="container my-5">
-      <h1 className=" text-center py-5">Manage Tools Products: {tools.length}</h1>
+      <h1 className=" text-center py-5">
+        Manage Tools Products: {tools.length}
+      </h1>
       <div className=" table-responsive">
         <Table hover size="sm" className="text-center" striped>
           <thead className="rounded">
@@ -68,11 +72,11 @@ const handleDelete = (id) => {
               <td className="pb-0 pt-3 fw-bold">{tool.vendor}</td>
               <td className="pb-0 pt-3 fw-bold">{tool.material}</td>
               <td className="pb-0 fw-bold ">
-                  <i
-                   onClick={() => handleDelete(tool._id)}
-                    class="fa-solid fa-trash-can fs-5"
-                  ></i>
-                </td>
+                <i
+                  onClick={() => handleDelete(tool._id)}
+                  class="fa-solid fa-trash-can fs-5"
+                ></i>
+              </td>
             </tbody>
           ))}
         </Table>

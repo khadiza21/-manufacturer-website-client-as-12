@@ -11,7 +11,9 @@ const ManageOrders = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch("http://localhost:5000/orders/admin").then((res) => res.json())
+    fetch("https://fathomless-plains-16450.herokuapp.com/orders/admin").then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {
@@ -21,7 +23,7 @@ const ManageOrders = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {
-      const url = `http://localhost:5000/orders/${id}`;
+      const url = `https://fathomless-plains-16450.herokuapp.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
@@ -32,33 +34,14 @@ const ManageOrders = () => {
         .then((deleteItem) => {
           console.log(deleteItem);
           toast("Deleted One Item!");
-         
+          const remaining = aorders.filter((order) => order._id !== id);
           refetch();
-         ;
+          setOrders(remaining);
         });
     }
   };
 
-
-  const handleStatus = (id) => {
-   
-
-    const url = `http://localhost:5000/orders/${id}`;
-    console.log(url);
-    fetch(url, {
-      method: "PUT", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-     
-    })
-      .then((res) => res.json())
-      .then((data) => {
-       
-        toast("Delivered One Item!");
-        console.log("success", data);
-      });
-  };
+  const handleStatus = () => {};
 
   return (
     <div className="container my-5">
@@ -106,7 +89,10 @@ const ManageOrders = () => {
                     )}
                     <br />
                     {order.price && order.paid && (
-                      <button onClick={() => handleStatus(order._id)} className="btn btn-success bg-success fw-bold mt-2">
+                      <button
+                        onClick={handleStatus}
+                        className="btn btn-success bg-success fw-bold mt-2"
+                      >
                         Shipted
                       </button>
                     )}
