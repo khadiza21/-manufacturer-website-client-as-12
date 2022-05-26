@@ -14,6 +14,9 @@ const ManageProducts = () => {
     return <Loading></Loading>
 }
 
+
+
+
 const handleDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {

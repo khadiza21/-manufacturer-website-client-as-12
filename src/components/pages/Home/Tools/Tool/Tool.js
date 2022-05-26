@@ -7,7 +7,7 @@ import "./Tool.css";
 const Tool = (props) => {
   const {
     _id,
-    name,
+    toolsname,
     description,
     img,
     price,
@@ -26,7 +26,7 @@ const Tool = (props) => {
         <img className="img-r img-fluid rounded" src={img} alt="" />
       </div>
       <div className="">
-        <h4 className=" mt-2 fw-bold">Name: {name}</h4>
+        <h4 className=" mt-2 fw-bold">Name: {toolsname}</h4>
 
         <Fade top>
           <h6 className="tool-text"> Description: {description}</h6>

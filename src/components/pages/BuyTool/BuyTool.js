@@ -47,7 +47,7 @@ const BuyTool = () => {
         <div className=" d-flex justify-content-center">
           <div>
             <h3 className="fw-bold text-center my-5">
-              Tools Name: {product.name}
+              Tools Name: {product.toolsname}
              
             </h3>
             <img
@@ -96,7 +96,7 @@ const BuyTool = () => {
                 <label>Product name:</label>
                 <input
                   placeholder="Name"
-                  value={product.name}
+                  value={product.toolsname}
                   className="border p-2 mb-2 "
                   {...register("toolsname", { required: true })}
                 />

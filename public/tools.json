@@ -1,6 +1,6 @@
 [
   {
-    "name": "Farm Car",
+    "toolsname": "Farm Car",
     "img": "https://img.krishijagran.com/media/63028/farm-tools.jpg",
     "size": "L",
     "material": "Iron Max",
@@ -13,7 +13,7 @@
     "price": "2700"
   },
   {
-    "name": "Flextool's Garden Cutter",
+    "toolsname": "Flextool's Garden Cutter",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/10_2000x.jpg?v=1547033411",
     "size": "L",
     "material": "Iron",
@@ -26,7 +26,7 @@
     "price": "270"
   },
   {
-    "name": "Gardening Water Spray",
+    "toolsname": "Gardening Water Spray",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/3_2000x.jpg?v=1557220212",
     "size": "L",
     "material": "Steel",
@@ -39,7 +39,7 @@
     "price": "220"
   },
   {
-    "name": "Flextool's Gardening Trowel",
+    "toolsname": "Flextool's Gardening Trowel",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/6_83eb6702-fa60-4e17-8ae8-f10be7f9c401_2000x.jpg?v=1547033404",
     "size": "L",
     "material": "Steel",
@@ -52,7 +52,7 @@
     "price": "260"
   },
   {
-    "name": "Eselar Gardening Hoe",
+    "toolsname": "Eselar Gardening Hoe",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/11_2000x.jpg?v=1550818084",
     "size": "M",
     "material": "Iron",
@@ -65,7 +65,7 @@
     "price": "470"
   },
   {
-    "name": "Eselar Tool Set",
+    "toolsname": "Eselar Tool Set",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/14_2000x.jpg?v=1547033392",
     "size": "S",
     "material": "Steel",
@@ -78,7 +78,7 @@
     "price": "770"
   },
   {
-    "name": "Gardening Pruners",
+    "toolsname": "Gardening Pruners",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/18_bc07f123-8d19-4afb-aaa7-cb6b0f1cba6a_2000x.jpg?v=1547033390",
     "size": "L",
     "material": "Steel",
@@ -91,7 +91,7 @@
     "price": "400"
   },
   {
-    "name": "Gardening Hand Gloves",
+    "toolsname": "Gardening Hand Gloves",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/17_720x.jpg?v=1547033389",
     "size": "M",
     "material": "Plastic",
@@ -104,7 +104,7 @@
     "price": "1000"
   },
   {
-    "name": "Eselar Gardening Trowel",
+    "toolsname": "Eselar Gardening Trowel",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/21_2000x.jpg?v=1547033387",
     "size": "M",
     "material": "Plastic",
@@ -120,12 +120,12 @@
     "avail_quantity": "15000",
     "availity": "In stock",
     "description": "A cutlass is a simple or small tool operated by hand to carry out agricultural activities. Most farming activities in the country are carried out with the aid of simple farm tools..",
-    "displayName": "Bibi Khadiza",
+    "displaytoolsname": "Bibi Khadiza",
     "email": "bibikhadiza474@gmail.com",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/11_2000x.jpg?v=1550818084",
     "material": "Iron",
     "min_order_quantity": "660",
-    "name": "Eselar Gardening Hoe",
+    "toolsname": "Eselar Gardening Hoe",
     "order_quantity": "34",
     "size": "M",
     "type": "Hoe",
@@ -133,7 +133,7 @@
     "vendor": "Eselar"
   },
   {
-    "displayName": "Bibi Khadiza",
+    "displaytoolsname": "Bibi Khadiza",
     "email": "bibikhadiza474@gmail.com",
     "img": "https://cdn.shopify.com/s/files/1/0166/1570/2628/products/11_2000x.jpg?v=1550818084",
     "reviewdes": "bkbkbkb thi s the googsd",
