@@ -11,9 +11,20 @@ const BuyTool = () => {
   const [user] = useAuthState(auth);
   const { id } = useParams();
 
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    console.log("from data ",data);
+    if (data?.order_quantity < data?.min_order_quantity) {
+      toast("Please Increase Your Order Quantity");
+      return;
+    }
+    if (data?.order_quantity > data?.avail_quantity) {
+      toast("Please Decrease Your Order Quantity");
+      return;
+    }
+    if (!(data?.order_quantity > data?.avail_quantity) && !(data?.order_quantity < data?.min_order_quantity)) {
+ 
+
+    console.log("from data ", data);
     const url = `http://localhost:5000/orders`;
     fetch(url, {
       method: "post", //thakle update korbe na thakle add koreb put
@@ -28,15 +39,17 @@ const BuyTool = () => {
         toast("Place order");
         reset();
       });
+
+    }
+
   };
-  const { data: product, isLoading } = useQuery(["product",id], () =>
+  const { data: product, isLoading } = useQuery(["product", id], () =>
     fetch(`http://localhost:5000/tools/${id}`).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
-
 
   return (
     <div className="container mx-auto my-5 pb-5">
@@ -48,7 +61,6 @@ const BuyTool = () => {
           <div>
             <h3 className="fw-bold text-center my-5">
               Tools Name: {product.toolsname}
-             
             </h3>
             <img
               src={product.img}
@@ -64,17 +76,13 @@ const BuyTool = () => {
         </div>
       </div>
       <div className="">
-     
-
         <div className="w-50 mx-auto my-4">
           <form
             className="flex flex-col mb-4 px-3 "
             onSubmit={handleSubmit(onSubmit)}
           >
-           
             <p>{user.displayName}</p>
             <p>{user.email}</p>
-            
 
             <input
               placeholder="Name"
@@ -187,10 +195,7 @@ const BuyTool = () => {
                   placeholder="Order Quantity"
                   type="number"
                   className="border p-2 mb-2 "
-                  {...register("order_quantity", {
-                    min: `${product.minmum}`,
-                    max: `${product.available}`,
-                  })}
+                  {...register("order_quantity")}
                 />
               </div>
             </div>
@@ -199,6 +204,7 @@ const BuyTool = () => {
               className="border p-2 mb-2 btn btn-warning"
               type="submit"
               value="Place order"
+      
             />
           </form>
 
@@ -210,8 +216,6 @@ const BuyTool = () => {
       <h4>{user?.displayName}</h4>
      
       {console.log(user)} */}
-
-   
         </div>
       </div>
     </div>

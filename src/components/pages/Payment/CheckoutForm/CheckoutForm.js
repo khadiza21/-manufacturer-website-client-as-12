@@ -26,7 +26,8 @@ const CheckoutForm = ({toolsname,_id,price,email}) => {
 
  console.log(price,_id,email,toolsname);
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+      if(price ){
+             fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -40,6 +41,8 @@ const CheckoutForm = ({toolsname,_id,price,email}) => {
                     setClientSecret(data.clientSecret);
                 }
             });
+      }
+   
 
     }, [price]);
 

@@ -60,7 +60,7 @@ const handleDelete = (id) => {
               <td className="">
                 <img src={tool.img} alt="" className=" img-set img-fluid" />
               </td>
-              <td className="pb-0 pt-3 fw-bold">{tool.name}</td>
+              <td className="pb-0 pt-3 fw-bold">{tool.toolsname}</td>
               <td className="pb-0 pt-3 fw-bold">
                 <sup>$</sup>
                 {tool.price}

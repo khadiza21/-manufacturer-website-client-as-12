@@ -6,6 +6,7 @@ import Banner from "./Banner";
 import Summary from "./Summary";
 import Tools from "./Tools/Tools/Tools"
 
+
 const Home = () => {
   return (
     <>
@@ -15,6 +16,7 @@ const Home = () => {
       <Offer></Offer>
       <Reviews></Reviews>
       <AddSection></AddSection>
+     
     </>
   );
 };

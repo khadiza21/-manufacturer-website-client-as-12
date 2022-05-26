@@ -32,36 +32,32 @@ const ManageOrders = () => {
         .then((deleteItem) => {
           console.log(deleteItem);
           toast("Deleted One Item!");
-          const remaining = aorders.filter((order) => order._id !== id);
+         
           refetch();
-          setOrders(remaining);
+         ;
         });
     }
   };
 
 
-  const handleStatus = () => {
-    // const bq = parseInt(inventory.quantity);
-    // const quantity = bq - 1;
-    // console.log(quantity);
-    // const quantity2 = { quantity };
-    // console.log(quantity2);
+  const handleStatus = (id) => {
+   
 
-    // const url = `https://cryptic-stream-01124.herokuapp.com/inventory/${id}`;
-    // console.log(url);
-    // fetch(url, {
-    //   method: "PUT", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(quantity2),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setIsReload(quantity);
-    //     toast("Delivered One Item!");
-    //     console.log("success", data);
-    //   });
+    const url = `http://localhost:5000/orders/${id}`;
+    console.log(url);
+    fetch(url, {
+      method: "PUT", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+     
+    })
+      .then((res) => res.json())
+      .then((data) => {
+       
+        toast("Delivered One Item!");
+        console.log("success", data);
+      });
   };
 
   return (
@@ -110,7 +106,7 @@ const ManageOrders = () => {
                     )}
                     <br />
                     {order.price && order.paid && (
-                      <button onClick={handleStatus} className="btn btn-success bg-success fw-bold mt-2">
+                      <button onClick={() => handleStatus(order._id)} className="btn btn-success bg-success fw-bold mt-2">
                         Shipted
                       </button>
                     )}
