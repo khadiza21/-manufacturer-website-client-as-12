@@ -13,14 +13,14 @@ const BuyTool = () => {
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    if (data?.order_quantity < data?.min_order_quantity) {
-      toast("Please Increase Your Order Quantity");
-      return;
-    }
-    if (data?.order_quantity > data?.avail_quantity) {
-      toast("Please Decrease Your Order Quantity");
-      return;
-    }
+    // if (data?.order_quantity < data?.min_order_quantity) {
+    //   toast("Please Increase Your Order Quantity");
+    //   return;
+    // }
+    // if (data?.order_quantity > data?.avail_quantity) {
+    //   toast("Please Decrease Your Order Quantity");
+    //   return;
+    // }
   
       console.log("from data ", data);
       const url = `https://fathomless-plains-16450.herokuapp.com/orders`;

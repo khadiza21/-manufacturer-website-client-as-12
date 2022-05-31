@@ -97,7 +97,10 @@ const MyOrder = () => {
                   ></i>
                 )}
                 {order.price && order.paid && (
-                  <h3 className="text-success fw-bold">PAID</h3>
+                  <div className="text-success fw-bold">PAID
+                  <h6>PAID</h6>
+                  <p>Transaction id: <span>{order.transactionId}</span></p>
+                  </div>
                 )}
               </td>
 
