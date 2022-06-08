@@ -23,3 +23,6 @@
 
 - Language: HTML5, CSS3, JS , JS ES6
 - Libraris: React , React-Router-Dom, React-Dom, react-bootstrap,react-firebase-hooks,react-reveal,react-toastify
+
+Admin email: phero9087@gmail.com
+Admin Pass: 123456
